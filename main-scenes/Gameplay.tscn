@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/bgr_space_0.png" type="Texture" id=2]
+[ext_resource path="res://enemys/alien.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemys/alien_spaceship.tscn" type="PackedScene" id=4]
+[ext_resource path="res://textures/bgr_space_1.png" type="Texture" id=5]
+[ext_resource path="res://enemys/alien_tank.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemys/alien_shooter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=8]
+[ext_resource path="res://main-scenes/background_space.gd" type="Script" id=14]
+
+[node name="gameplay" type="Node2D"]
+
+[node name="background_space" type="ParallaxBackground" parent="."]
+script = ExtResource( 14 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background_space"]
+motion_scale = Vector2( 1, 0.8 )
+motion_mirroring = Vector2( 0, 1080 )
+
+[node name="Sprite" type="Sprite" parent="background_space/ParallaxLayer"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="background_space"]
+motion_mirroring = Vector2( 0, 1080 )
+
+[node name="Sprite" type="Sprite" parent="background_space/ParallaxLayer2"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 973, 972 )
+
+[node name="alien" parent="." instance=ExtResource( 3 )]
+position = Vector2( 369, 154 )
+
+[node name="alien4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1248, 126 )
+
+[node name="alien5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1377, 95 )
+
+[node name="alien2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 549, 102 )
+
+[node name="alien3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 218, 105 )
+
+[node name="alien_spaceship" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1497, 252 )
+
+[node name="alien_tank" parent="." instance=ExtResource( 6 )]
+position = Vector2( 707, 105 )
+
+[node name="alien_tank2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1771, 133 )
+
+[node name="alien_shooter" parent="." instance=ExtResource( 7 )]
+position = Vector2( 828, 137 )
+
+[node name="Interface" parent="." instance=ExtResource( 8 )]

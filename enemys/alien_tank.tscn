@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://enemys/alien_tank.gd" type="Script" id=1]
+[ext_resource path="res://textures/spr_Alien_1.png" type="Texture" id=2]
+[ext_resource path="res://textures/spr_Alien_0.png" type="Texture" id=3]
+[ext_resource path="res://textures/spr_Alien_2.png" type="Texture" id=4]
+[ext_resource path="res://textures/spr_Alien_suit_2.png" type="Texture" id=5]
+[ext_resource path="res://textures/spr_Alien_suit_1.png" type="Texture" id=6]
+[ext_resource path="res://textures/spr_alien_suit_3.png" type="Texture" id=7]
+[ext_resource path="res://textures/spr_Alien_suit_0.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "suit_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "suit_3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "suit_1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "suit_0",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 23.0
+height = 38.0
+
+[node name="alien_tank" type="Area2D" groups=["damageable"]]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="Helmet" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "suit_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, -8 )
+shape = SubResource( 2 )
+
+[node name="fireDelayTimer" type="Timer" parent="." groups=["damageable"]]
+one_shot = true

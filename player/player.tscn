@@ -1,0 +1,33 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://textures/spr_spaceship_4.png" type="Texture" id=1]
+[ext_resource path="res://textures/spr_spaceship_3.png" type="Texture" id=2]
+[ext_resource path="res://textures/spr_spaceship_6.png" type="Texture" id=3]
+[ext_resource path="res://textures/spr_spaceship_2.png" type="Texture" id=4]
+[ext_resource path="res://textures/spr_spaceship_7.png" type="Texture" id=5]
+[ext_resource path="res://textures/spr_spaceship_0.png" type="Texture" id=6]
+[ext_resource path="res://textures/spr_spaceship_5.png" type="Texture" id=7]
+[ext_resource path="res://textures/spr_spaceship_1.png" type="Texture" id=8]
+[ext_resource path="res://player/player.gd" type="Script" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[node name="player" type="Area2D" groups=["player"]]
+script = ExtResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 5
+playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -3, -36, 3, -36, 3, -28, 14, -21, 14, 3, 20, 3, 31, -49, 50, 17, 43, 25, 34, 28, 20, 31, 18, 41, 12, 41, 10, 31, -10, 31, -12, 41, -18, 41, -20, 31, -34, 28, -43, 25, -50, 18, -32, -49, -20, 3, -14, 3, -14, -21, -3, -28 )
+
+[node name="fireDelayTimer" type="Timer" parent="."]
+one_shot = true

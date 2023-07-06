@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/enemys/alien_shooter/spr_alien_shooter_1.png" type="Texture" id=1]
+[ext_resource path="res://textures/enemys/alien_shooter/spr_alien_shooter_0.png" type="Texture" id=2]
+[ext_resource path="res://enemys/alien_shooter.gd" type="Script" id=3]
+[ext_resource path="res://textures/enemys/alien_shooter/spr_alien_shooter_2.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 25.0
+height = 56.0
+
+[node name="alien_shooter" type="Area2D" groups=["damageable"]]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, 3 )
+shape = SubResource( 2 )
+
+[node name="fireDelayTimer" type="Timer" parent="."]
+one_shot = true
